@@ -1,0 +1,31 @@
+﻿@using LogSys.Extenders
+@model List<LogSys.Models.ReportRowModel>
+
+@if (Model != null && Model.Any())
+{
+    <table class="list">
+        <tr>
+            <th class="one_px">
+                Date
+            </th>
+            <th>
+                Time spent
+            </th>
+        </tr>
+        @foreach (var reportRowModel in Model)
+        {
+            <tr>
+                <td>
+                    @reportRowModel.Date.ToShortDateString()
+                </td>
+                <td>
+                    @(reportRowModel.Duration.ToHoursAndMinutes())
+                </td>
+            </tr>
+        }
+    </table>
+    <div id="report_share">
+        <button>Share report</button>
+    </div>
+}
+

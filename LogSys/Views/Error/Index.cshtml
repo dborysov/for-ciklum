@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Message</h1>
+            </hgroup>
+            <p>
+                With Loggy you are able to log your work and generate detailed reports for you and your customer!
+            </p>
+        </div>
+    </section>
+}
+<h3>Working in our system is very simple!</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Register</h5>
+        <p>In order to work with Loggy, you should @(Request.IsAuthenticated ? new HtmlString("authorize") : Html.ActionLink("authorize", "Login", "Account")).</p> 
+        <p>Don't have an account? @Html.ActionLink("Registration", "Register", "Account") is always free!</p>
+    </li>
+
+    <li class="two">
+        <h5>Choose a project</h5>
+        <p>You can have more than one working project. Manage them @Html.ActionLink("here", "Index", "Projects").</p>
+    </li>
+
+    <li class="three">
+        <h5>Manage your work logs</h5>
+        <p>Add, delete and edit your work logs. Can't be simplier!</p>
+    </li>
+    
+    <li class="four">
+        <h5>Generate reports</h5>
+        <p>It's possible to generate and share reports based on your logs. Just @Html.ActionLink("try", "Index", "Reports") it!</p>
+    </li>
+</ol>

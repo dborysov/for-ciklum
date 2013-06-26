@@ -1,0 +1,16 @@
+﻿@model LogSys.Models.ProjectLogsModel
+
+@{
+    ViewBag.Title = Model.ProjectName;
+}
+
+<h2>@Model.ProjectName</h2>
+@Html.ActionLink("<<Back", "Index", "Projects")
+
+@Html.Partial("_LogsTable", Model)
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/Scripts/Logs.js")
+}

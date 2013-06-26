@@ -1,0 +1,13 @@
+﻿@model LogSys.Models.ProjectModel
+@using (Ajax.BeginForm("CreateProject", "Projects", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "projects-list", OnSuccess = "javascript:$('#g_ajax_popup').hide().html('');ProjectsManager.bindEvents();" }, new { id = "create_project_postback" }))
+{
+    <fieldset>
+        <legend>
+            Create new project
+        </legend>
+        @Html.EditorForModel()
+        <input type="submit" value="Create" />
+        <input type="button" onclick="$('#g_ajax_popup').hide().html('')" value="Cancel"/>
+        @Html.ValidationSummary()
+    </fieldset>
+}

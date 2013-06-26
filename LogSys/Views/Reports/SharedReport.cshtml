@@ -1,0 +1,55 @@
+﻿@model LogSys.Models.SharedReportModel
+@{
+    ViewBag.Title = "Shared report";
+}
+
+<h2>Shared report</h2>
+<div class="message-error">@ViewBag.ErrorMessage</div>
+
+<div class="p-shared-reports">
+    @if (Model != null)
+    {
+        <table class="reports-filters">
+            <tr>
+                <th>@Html.LabelFor(m => m.UserName)</th>
+                <th>@Html.LabelFor(m => m.ProjectName)</th>
+                <th>@Html.LabelFor(m => m.Period)</th>
+                <th>@Html.LabelFor(m => m.EndDate)</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(m => m.UserName)</td>
+                <td>@Html.DisplayFor(m => m.ProjectName)</td>
+                <td>@Html.DisplayFor(m => m.Period)</td>
+                <td>@Model.EndDate.ToShortDateString()</td>
+            </tr>
+        </table>
+
+        <div id="shared_report_table_wrapper">
+            <table class="list">
+                <tr>
+                    <th class="one_px">
+                        Date
+                    </th>
+                    <th>
+                        Time spent
+                    </th>
+                </tr>
+                @foreach (var reportRowModel in Model.Report)
+                {
+                    <tr>
+                        <td>
+                            @reportRowModel.Date.ToShortDateString()
+                        </td>
+                        <td>
+                            @(reportRowModel.Duration.TotalMinutes > 0
+                                  ? reportRowModel.Duration.Hours > 0
+                                        ? string.Format("{0} hour(s), {1} minute(s)", reportRowModel.Duration.Hours, reportRowModel.Duration.Minutes)
+                                        : string.Format("{0} minute(s)", reportRowModel.Duration.Minutes)
+                                  : "-")
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

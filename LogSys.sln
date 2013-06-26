@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogSys", "LogSys\LogSys.csproj", "{B1828FF0-E727-44B5-BC55-C75C3B84B3D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogSys.DataAccess", "LogSys.DataAccess\LogSys.DataAccess.csproj", "{7ACA9BC0-A470-4DBF-AC3C-AC94DD5F60E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogSys.Tests", "LogSys.Tests\LogSys.Tests.csproj", "{81AF7714-DB8B-4669-84F9-1301239B41E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1828FF0-E727-44B5-BC55-C75C3B84B3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1828FF0-E727-44B5-BC55-C75C3B84B3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1828FF0-E727-44B5-BC55-C75C3B84B3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1828FF0-E727-44B5-BC55-C75C3B84B3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ACA9BC0-A470-4DBF-AC3C-AC94DD5F60E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ACA9BC0-A470-4DBF-AC3C-AC94DD5F60E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ACA9BC0-A470-4DBF-AC3C-AC94DD5F60E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ACA9BC0-A470-4DBF-AC3C-AC94DD5F60E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81AF7714-DB8B-4669-84F9-1301239B41E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81AF7714-DB8B-4669-84F9-1301239B41E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81AF7714-DB8B-4669-84F9-1301239B41E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81AF7714-DB8B-4669-84F9-1301239B41E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

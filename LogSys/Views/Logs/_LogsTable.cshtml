@@ -1,0 +1,48 @@
+﻿@using LogSys.Extenders
+@model LogSys.Models.ProjectLogsModel
+<div id="logs-list">
+    <div class="message-success">@ViewBag.SuccessMessage</div>
+    <div class="message-error">@ViewBag.ErrorMessage</div>
+    @if (Model != null)
+    {
+        if (Model.Logs != null && Model.Logs.Any())
+        {
+            <table class="list">
+                <tr>
+                    <th><input type="checkbox" id="check_all_logs" /></th>
+                    <th>Description</th>
+                    <th>Log date</th>
+                    <th>Logged time</th>
+                    <th>Tools</th>
+                </tr>
+                @foreach (var log in Model.Logs)
+                {
+                    <tr data-log-id="@log.Id">
+                        <td class="log-checker">
+                            <input type="checkbox" /></td>
+                        <td class="log-description"><span title="@log.Description">@log.Description</span></td>
+                        <td class="log-date"><span title="@log.LogDate.ToShortDateString()">@log.LogDate.ToShortDateString()</span></td>
+                        <td class="log-time"><span title="@log.LoggedMinutes.MinutesToHoursAndMinutes()">@log.LoggedMinutes.MinutesToHoursAndMinutes()</span></td>
+                        <td class="tools">
+                            <span class="icon delete">&nbsp;</span>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div>
+                You haven't logged anything for this project.
+            </div>
+        }
+        using (@Ajax.BeginForm("CreateLogPopup", new {projectId = Model.ProjectId}, new AjaxOptions {UpdateTargetId = "g_ajax_popup", OnSuccess = "javascript:$('#g_ajax_popup').show().draggable({ containment: 'html', scroll: false });$.validator.unobtrusive.parse($('#create_log_postback'))", InsertionMode = InsertionMode.Replace, HttpMethod = "GET"}, new {id = "create_log"}))
+        {
+            <input type="submit" value="Log time" />
+        }
+        if (Model.Logs != null && Model.Logs.Any())
+        {
+            <button disabled="disabled" id="delete_log">Delete</button>
+        }
+    }
+</div>

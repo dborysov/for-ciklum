@@ -1,0 +1,27 @@
+﻿@using LogSys.Enums
+@using LogSys.Models
+@model ProjectReportFiltersModel
+
+@{
+    ViewBag.Title = "Report";
+}
+<div class="p-reports">
+    <table class="reports-filters">
+        <tr>
+            <th>@Html.LabelFor(m => m.UserProjects)</th>
+            <th>@Html.LabelFor(m => m.Period)</th>
+            <th>@Html.LabelFor(m => m.EndDate)</th>
+        </tr>
+        <tr>
+            <td>@Html.DropDownList("Projects", new[] { new ProjectModel { Name = "All projects" } }.Concat(Model.UserProjects).Select(p => new SelectListItem { Text = p.Name, Value = p.Id.ToString(), Selected = p.Id == Model.ProjectId || (!p.Id.HasValue && !Model.ProjectId.HasValue) }))</td>
+            <td>@Html.DropDownList("Periods", Enum.GetNames(typeof(ReportPeriods)).Select(n => new SelectListItem { Text = n, Value = ((int)Enum.Parse(typeof(ReportPeriods), n)).ToString(), Selected = Model.Period.ToString() == n }))</td>
+            <td>@Html.EditorFor(m => m.EndDate)</td>
+        </tr>
+    </table>
+    
+    <div id="report_table_wrapper"></div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/Reports.js")
+}

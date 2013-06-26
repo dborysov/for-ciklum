@@ -1,0 +1,3 @@
+﻿@model Guid
+<div>Public link to this report:</div>
+@Html.TextBox("ShareLink", Url.Action("SharedReport", "Reports", new { guid = Model }, Request.Url.Scheme))

@@ -1,0 +1,46 @@
+﻿@model List<LogSys.Models.ProjectModel>
+<div id="projects-list">
+    <div class="message-success">@ViewBag.SuccessMessage</div>
+    <div class="message-error">@ViewBag.ErrorMessage</div>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="list">
+            <tr>
+                <th>
+                    <input type="checkbox" id="check_all_projects" /></th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Tools</th>
+            </tr>
+            @foreach (var project in Model)
+            {
+                <tr>
+                    <td class="project-checker">
+                        <input type="checkbox" /></td>
+                    <td class="project-name">@Html.ActionLink(project.Name, "Index", "Logs", new { projectId = project.Id }, new { title = project.Name })</td>
+                    <td class="project-description"><span title="@project.Description">@project.Description</span></td>
+                    <td class="tools">
+                        <span class="icon edit">&nbsp;</span>
+                        <span class="icon delete">&nbsp;</span>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div>
+            You haven't added any projects yet.
+        </div>
+    }
+    @using (@Ajax.BeginForm("CreateProject", "Projects", new AjaxOptions {UpdateTargetId = "g_ajax_popup", OnSuccess = "javascript:$('#g_ajax_popup').show().draggable({ containment: 'html', scroll: false });$.validator.unobtrusive.parse($('#create_project_postback'))", InsertionMode = InsertionMode.Replace, HttpMethod = "GET"}, new {id = "create_project"}))
+    {
+        <input type="submit" value="Create new project" />
+    }
+    @if (Model != null && Model.Any())
+    {
+        <button disabled="disabled" id="delete_project">Delete</button>
+    }
+</div>
+

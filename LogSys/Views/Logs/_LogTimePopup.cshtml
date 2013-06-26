@@ -1,0 +1,13 @@
+﻿@model LogSys.Models.LogModel
+
+@using (Ajax.BeginForm("CreateLog", "Logs", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "logs-list", OnSuccess = "javascript:$('#g_ajax_popup').hide().html('');LogsManager.bindTableEvents();" }, new { id = "create_log_postback" }))
+{
+    <fieldset>
+        <legend>Log time
+        </legend>
+        @Html.EditorForModel()
+        <input type="submit" value="Log" />
+        <input type="button" onclick="$('#g_ajax_popup').hide().html('')" value="Cancel" />
+        @Html.ValidationSummary()
+    </fieldset>
+}
