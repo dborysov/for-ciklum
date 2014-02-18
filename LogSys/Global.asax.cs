@@ -26,7 +26,7 @@ namespace LogSys
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<LoggyContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<LoggyContext>());
         }
     }
 }
